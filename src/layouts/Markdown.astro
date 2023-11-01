@@ -19,6 +19,12 @@ const { title, description } = Astro.props.frontmatter;
     <div class="container mx-auto max-w-4xl bg-white py-10 text-center">
       <h1 class="text-5xl text-indigo-800 uppercase">{title}</h1>
       <h3 class="italic text-base text-slate-600">{description}</h3>
+      <nav class=" fixed right-8 top-8 w-auto">
+        <ul class=" list-none flex gap-2">
+          <li><a href="/">en</a></li>
+          <li><a href="/es">es</a></li>
+        </ul>
+      </nav>
       <div
         class="doc-body container max-w-3xl mx-auto p-16 rounded-lg border border-gray-300 shadow-xl text-left mt-8"
       >
