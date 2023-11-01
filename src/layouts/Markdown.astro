@@ -1,0 +1,49 @@
+---
+const { title, description } = Astro.props.frontmatter;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Astro description" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <div class="container mx-auto max-w-4xl bg-white py-10 text-center">
+      <h1 class="text-5xl text-indigo-800 uppercase">{title}</h1>
+      <h3 class="italic text-base text-slate-600">{description}</h3>
+      <div
+        class="doc-body container max-w-3xl mx-auto p-16 rounded-lg border border-gray-300 shadow-xl text-left mt-8"
+      >
+        <slot />
+      </div>
+    </div>
+  </body>
+</html>
+<style is:global>
+  body {
+    @apply text-slate-700 text-base;
+  }
+
+  h1 {
+    @apply text-indigo-800 text-2xl;
+  }
+
+  h2 {
+    @apply text-indigo-800 text-2xl  mt-5 mb-1;
+  }
+
+  p {
+    @apply text-slate-700;
+  }
+
+  .content-gradient {
+    background: linear-gradient(to bottom, indigo, pink, blue, yellow);
+    padding: 20px;
+    border-radius: 8px; /* optional: for rounded corners */
+  }
+</style>
