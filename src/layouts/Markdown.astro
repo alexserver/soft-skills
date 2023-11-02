@@ -20,7 +20,7 @@ const { title, description } = Astro.props.frontmatter;
   </head>
   <body>
     <div
-      class="sticky top-0 left-0 w-full p-3 bg-white border-b header border-b-slate-200 md:p-8"
+      class="sticky top-0 left-0 w-full p-3 bg-white border-b shadow-sm header border-b-slate-200 md:p-8 "
     >
       <nav class="absolute py-6 top-3 left-3 md:py-6 md:top-8 md:left-8">
         <ul class="flex gap-2 list-none">
@@ -35,7 +35,7 @@ const { title, description } = Astro.props.frontmatter;
     </div>
 
     <div
-      class="container max-w-3xl p-16 mx-auto my-10 text-left md:border md:border-gray-300 md:rounded-lg md:shadow-xl"
+      class="container max-w-4xl p-8 mx-auto my-0 text-left md:my-10 md:p-14 md:border md:border-gray-300 md:rounded-lg md:shadow-xl"
     >
       <slot />
     </div>
