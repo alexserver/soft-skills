@@ -16,17 +16,17 @@ const { title, description } = Astro.props.frontmatter;
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500&family=Oswald:wght@200;300;400;500&display=swap" rel="stylesheet">
   </head>
   <body>
-    <div class="container mx-auto max-w-4xl bg-white py-10 text-center">
+    <nav class="sticky top-0 left-0 p-3 bg-white border-b md:fixed md:p-8 md:w-max border-b-slate-200 md:border-b-0">
+      <ul class="flex gap-2 list-none ">
+        <li><a href="/">en</a></li>
+        <li><a href="/es">es</a></li>
+      </ul>
+    </nav>
+    <div class="container max-w-4xl py-2 mx-auto text-center bg-white md:py-10">
       <h1 class="text-5xl text-indigo-800 uppercase">{title}</h1>
-      <h3 class="italic text-base text-slate-600">{description}</h3>
-      <nav class=" fixed right-8 top-8 w-auto">
-        <ul class=" list-none flex gap-2">
-          <li><a href="/">en</a></li>
-          <li><a href="/es">es</a></li>
-        </ul>
-      </nav>
+      <h3 class="text-base italic text-slate-600">{description}</h3>
       <div
-        class="doc-body container max-w-3xl mx-auto p-16 rounded-lg border border-gray-300 shadow-xl text-left mt-8"
+        class="container max-w-3xl p-16 mx-auto mt-8 text-left md:border md:border-gray-300 md:rounded-lg md:shadow-xl"
       >
         <slot />
       </div>
