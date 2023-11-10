@@ -1,7 +1,8 @@
 ---
-layout: "../layouts/Markdown.astro"
-title: "Habilidades Blandas"
-description: "hoja de resumen"
+layout: "../layouts/Layout.astro"
+title: "Soft Skills"
+description: "¿qué son y por qué son importantes?"
+downloadUrl: "/resources/es.pdf"
 ---
 ## Comunicación Efectiva
 La habilidad de transmitir ideas, sentimientos e información de manera clara y concisa. Implica escucha activa, claridad en el habla o escritura y asegurar la comprensión mutua entre las partes.
