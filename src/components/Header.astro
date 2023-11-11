@@ -14,15 +14,58 @@ const { description, downloadUrl, title } = Astro.props;
     <h1>{title}</h1>
     <h3>{description}</h3>
   </div>
+  <!-- Hamburger icon -->
+  <input class="menu-trigger" type="checkbox" id="menu-trigger" />
+  <label class="hamb" for="menu-trigger">
+    <svg
+      class="w-6 h-6 text-gray-800 close-icon"
+      aria-hidden="true"
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 14 14"
+    >
+      <path
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"></path>
+    </svg>
+    <svg
+      class="w-6 h-6 text-gray-800 hamburger-icon"
+      aria-hidden="true"
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 17 14"
+    >
+      <path
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M1 1h15M1 7h15M1 13h15"></path>
+    </svg>
+  </label>
   <!-- Menu -->
   <nav class="header-menu">
     <ul>
-      <li><a href="/" title="View in english">en</a></li>
-      <li><a href="/es" title="View in spanish">es</a></li>
+      <li>
+        <a href="/" title="View in english">
+          <span class="mobile-only">view in english</span>
+          <span class="desktop-only">en</span>
+        </a>
+      </li>
+      <li>
+        <a href="/es" title="View in spanish">
+          <span class="mobile-only">ver en español</span>
+          <span class="desktop-only">es</span>
+        </a>
+      </li>
       <li>
         <a href={downloadUrl} title="Download in PDF version" download="">
+          <span class="mobile-only">download in pdf</span>
           <svg
-            class="w-6 h-6 text-gray-800 dark:text-white"
+            class="w-6 h-6 text-gray-800 desktop-only"
             aria-hidden="true"
             xmlns="http://www.w3.org/2000/svg"
             fill="currentColor"
@@ -42,8 +85,9 @@ const { description, downloadUrl, title } = Astro.props;
           href="https://github.com/alexserver/soft-skills"
           title="View on github"
         >
+          <span class="mobile-only">view on github</span>
           <svg
-            class="w-6 h-6 text-gray-800 dark:text-white"
+            class="w-6 h-6 text-gray-800 desktop-only"
             aria-hidden="true"
             xmlns="http://www.w3.org/2000/svg"
             fill="currentColor"
@@ -62,8 +106,7 @@ const { description, downloadUrl, title } = Astro.props;
 
 <style>
   .header-bar {
-    @apply sticky top-0 left-0 w-full bg-white border-b shadow-sm border-b-slate-200;
-    @apply p-4;
+    @apply sticky top-0 left-0 w-full bg-white border-b shadow-sm border-b-slate-200 p-4;
     @apply lg:px-8 xl:px-10;
     @apply flex gap-4 justify-between;
   }
@@ -77,9 +120,39 @@ const { description, downloadUrl, title } = Astro.props;
     @apply text-base italic text-slate-600;
   }
   .header-menu {
-    @apply py-6 md:py-6;
+    @apply py-4 hidden;
+    @apply md:block md:py-6;
   }
   .header-menu ul {
-    @apply flex gap-3 list-none;
+    @apply list-none flex flex-col gap-3;
+    @apply md:flex-row md:gap-3;
+  }
+  .header-menu ul li .mobile-only {
+    @apply md:hidden;
+  }
+  .header-menu ul li .desktop-only {
+    @apply hidden md:block;
+  }
+  .hamb {
+    @apply flex flex-col justify-center cursor-pointer;
+  }
+  .menu-trigger {
+    display: none;
+  }
+
+  .menu-trigger:checked ~ .header-menu {
+    @apply block fixed top-24 w-full left-0 bg-white px-4 shadow-xl;
+  }
+  .menu-trigger:checked ~ .hamb .hamburger-icon {
+    display: none;
+  }
+  .menu-trigger ~ .hamb .close-icon {
+    display: none;
+  }
+  .menu-trigger:checked ~ .hamb .close-icon {
+    display: inline;
+  }
+  .hamb {
+    @apply md:hidden;
   }
 </style>

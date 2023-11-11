@@ -1,7 +1,7 @@
 ---
 layout: "../layouts/Layout.astro"
 title: "Soft Skills"
-description: "what they are and why they are important?"
+description: "what they are and why they matter?"
 downloadUrl: "/resources/en.pdf"
 ---
 ## Effective Communication
