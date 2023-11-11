@@ -1,7 +1,8 @@
 ---
-layout: "../layouts/Markdown.astro"
+layout: "../layouts/Layout.astro"
 title: "Soft Skills"
-description: "a cheatsheet"
+description: "what they are and why they matter?"
+downloadUrl: "/resources/en.pdf"
 ---
 ## Effective Communication
 The ability to convey ideas, feelings, and information clearly and concisely. It involves active listening, clarity in speech or writing, and ensuring mutual understanding among parties.

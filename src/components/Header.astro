@@ -1,0 +1,96 @@
+---
+import Nav from "./Nav.astro";
+
+interface Props {
+  title: string;
+  description: string;
+  downloadUrl: string;
+}
+
+const { description, downloadUrl, title } = Astro.props;
+---
+
+<header class="header-bar">
+  <!-- Title -->
+  <div class="header-title">
+    <h1>{title}</h1>
+    <h3>{description}</h3>
+  </div>
+  <!-- Hamburger icon -->
+  <input class="menu-trigger" type="checkbox" id="menu-trigger" />
+  <label class="hamb" for="menu-trigger">
+    <svg
+      class="w-6 h-6 text-gray-800 close-icon"
+      aria-hidden="true"
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 14 14"
+    >
+      <path
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"></path>
+    </svg>
+    <svg
+      class="w-6 h-6 text-gray-800 hamburger-icon"
+      aria-hidden="true"
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 17 14"
+    >
+      <path
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M1 1h15M1 7h15M1 13h15"></path>
+    </svg>
+  </label>
+  <!-- Menu -->
+  <Nav downloadUrl={downloadUrl} />
+</header>
+
+<style>
+  .header-bar {
+    @apply sticky top-0 left-0 w-full bg-white border-b shadow-sm border-b-slate-200 p-4;
+    @apply lg:px-8 xl:px-10;
+    @apply flex gap-4 justify-between;
+  }
+  .header-title {
+    @apply text-left;
+  }
+  .header-title h1 {
+    @apply text-5xl text-indigo-800;
+  }
+  .header-title h3 {
+    @apply text-base italic text-slate-600;
+  }
+  .hamb {
+    @apply flex flex-col justify-start pt-2 cursor-pointer;
+  }
+  .menu-trigger {
+    display: none;
+  }
+  .menu-trigger:checked ~ .hamb .hamburger-icon {
+    display: none;
+  }
+  .menu-trigger ~ .hamb .close-icon {
+    display: none;
+  }
+  .menu-trigger:checked ~ .hamb .close-icon {
+    display: inline;
+  }
+  .hamb {
+    @apply md:hidden;
+  }
+</style>
+
+<style is:global>
+  /* I don't like this style to be global because it creates a dependency on Nav component, but for the moment 
+  this is the best we have */
+  .menu-trigger:checked ~ .header-menu {
+    @apply block fixed top-24 w-full left-0 bg-white px-4 shadow-xl;
+  }
+</style>
